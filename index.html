@@ -31,6 +31,17 @@
             <h2>Sign Up Form</h2>
         </main>
 
+    <form name="signupForm" novalidate>
+        <label for="fnameInp">First Name:</label>
+        <input type="text" class="form-control" id="fnameInp" name="fnameInp" ng-model="signup.fname"
+               placeholder="enter first name" required />
+    </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" ng-disabled="signupForm.$invalid">Submit</button>
+        </div>
+    </form>
 
     </body>
 </html>
