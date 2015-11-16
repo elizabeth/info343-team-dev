@@ -1,4 +1,6 @@
 angular.module('SignupApp', [])
+    //the direcitve will be invalid if the date is less than 13 years from now
+    //fow example, 11/20/2002 will be invalid
     .directive('moreThanThirteenAgo', function() {
         return {
             require: 'ngModel',
@@ -15,6 +17,8 @@ angular.module('SignupApp', [])
             }
         };
     })
+    //the directive will be invalid if the input is not a date
+    //for example: swad, 15555
     .directive('isDate', function() {
         return {
             require: 'ngModel',
@@ -32,6 +36,8 @@ angular.module('SignupApp', [])
     })
     .controller('SignupController', function($scope) {
 
+        //there should be ng-submit=submitSignUp in html form
+        //also create a model confirmation to show confirmation message
         $scope.submitSignUp = function() {
             $scope.confirmation = 'you have signed up';
             $scope = null;
