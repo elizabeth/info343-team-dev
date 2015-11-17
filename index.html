@@ -18,6 +18,9 @@
         <!--our stylesheet-->
         <link rel="stylesheet" href="css/main.css">
 
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
         <!-- angular script file -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 
@@ -30,14 +33,25 @@
         <main class="container" ng-app="SignupApp">
             <h2>Sign Up Form</h2>
 
-            <div>
-                <form name="signupForm" novalidate>
+            <p class="alert alert-success" id="confirmation">You have successfully submitted your form!</p>
+
+            <div ng-controller="SignupController">
+                <form name="signupForm" id="signupForm" novalidate>
                     <div class="form-group">
                         <label for="fnameInp">First Name:</label>
                         <input type="text" class="form-control" id="fnameInp" name="fnameInp" ng-model="signup.fname"
-                               placeholder="first name" required />
+                               placeholder="your first name" required />
                         <p class="validation-error" ng-if="signupForm.fnameInp.$error.required">
-                            Must enter a first name
+                            Please enter your first name
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lnameInp">Last Name:</label>
+                        <input type="text" class="form-control" id="lnameInp" name="lnameInp" ng-model="signup.lname"
+                               placeholder="your last name" required />
+                        <p class="validation-error" ng-if="signupForm.lnameInp.$error.required">
+                            Please enter your last name
                         </p>
                     </div>
 
@@ -50,10 +64,20 @@
                         </p>
                     </div>
 
+
+                    <div class="form-group">
+                        <label for="emailInp">Email:</label>
+                        <input type="email" class="form-control" id="emailInp" name="emailInp" ng-model="signup.email"
+                               placeholder="your@email.com" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
+                        <p class="validation-error" ng-if="signupForm.emailInp.$error.required">
+                            Must enter a valid email address
+                        </p>
+                    </div>
+
                     <div class="form-group">
                         <label for="passInp">Password:</label>
                         <input type="password" class="form-control" id="passInp" name="passInp" ng-model="signup.pass"
-                               placeholder="password" reqiored/>
+                               placeholder="password" required/>
                         <p class="validation-error" ng-if="signupForm.passInp.$error.required">
                             Must enter a password
                         </p>
@@ -61,15 +85,16 @@
 
                     <div class="form-group">
                         <label for="passConfInp">Confirm Password:</label>
-                        <input type="password" class="form-control" id="passConfInp" name="passConfInp" ng-model="signup.passConf"
-                               placeholder="confirm password" reqiored/>
-                        <p class="validation-error" ng-if="signupForm.passConfInp.$error.required">
-                            MPasswords do not match
+                        <input type="password" class="form-control" id="passConfInp" name="passConfInp"
+                               placeholder="confirm password" ng-model="signup.passConf" pw-check="signup.pass" required>
+                        <p class="validation-error" ng-if="signupForm.passConfInp.$error.pwmatch">
+                            Passwords do not match
                         </p>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary" ng-disabled="signupForm.$invalid">Submit</button>
+                        <button type="submit" class="btn btn-primary" ng-disabled="signupForm.$invalid"
+                                ng-click="submitSignUp()">Sign up</button>
                     </div>
                 </form>
             </div>
