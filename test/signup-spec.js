@@ -1,13 +1,25 @@
 //test script for the signup form app
 
 describe('the signup app', function() {
-   	
+   	    var lnameInp = element(by.model('signup.lname'));
+    var requiredLName = $('.lname-required-error');
+
+
    	var firstPasswordInput = element(by.model('signup.pass'));
    	var secondPasswordInput = element(by.model('signup.passConf'));
 	var passwordMatchError = $('.passwordError');
 
     beforeEach(function() {
         browser.get('http://localhost:8000');
+    });
+
+    it('must require last name', function() {
+        expect(requiredLName.isPresent()).toEqual(false);
+        lnameInp.sendKeys('a');
+        expect(requiredLName.isPresent()).toEqual(false);
+        lnameInp.clear();
+        expect(requiredLName.isPresent()).toEqual(true);
+        lnameInp.clear();
     });
 
     it('must show unmatched passwords error', function() {
@@ -32,5 +44,8 @@ describe('the signup app', function() {
         secondPasswordInput.sendKeys(wrong);
         expect(passwordMatchError.isPresent()).toBe(false);
     });
+
+
+    
 
 });
