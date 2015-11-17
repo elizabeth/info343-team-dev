@@ -58,10 +58,10 @@
                         <label for="dobInp">Birth date:</label>
                         <input type="text" class="form-control" id="dobInp" name="dobInp" ng-model="signup.dob"
                                placeholder="DD/MM/YYYY" more-than-thirteen-ago required/>
-                        <p class="validation-error" ng-if="signupForm.dobInp.$error.moreThanThirteenAgo">
+                        <p class="validation-error notThirteen" ng-if="signupForm.dobInp.$error.moreThanThirteenAgo">
                             You must be at least 13 to sign up
                         </p>
-                        <p class="validation-error" ng-if="signupForm.dobInp.$error.required && signupForm.dobInp.$dirty">
+                        <p class="validation-error requiredDob" ng-if="signupForm.dobInp.$error.required && signupForm.dobInp.$dirty">
                             Please enter your date of birth
                         </p>
                     </div>
@@ -91,7 +91,7 @@
                         <label for="passConfInp">Confirm Password:</label>
                         <input type="password" class="form-control" id="passConfInp" name="passConfInp"
                                placeholder="confirm password" ng-model="signup.passConf" pw-check="signup.pass" required>
-                        <p class="validation-error" ng-if="signupForm.passConfInp.$error.pwmatch && signupForm.passConfInp.$dirty">
+                        <p class="validation-error passwordError" ng-if="signupForm.passConfInp.$error.pwmatch && signupForm.passConfInp.$dirty">
                             Passwords do not match
                         </p>
                         <p class="validation-error" ng-if="signupForm.passConfInp.$error.required && signupForm.passInp.$dirty">
