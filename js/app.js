@@ -1,12 +1,16 @@
 angular.module('SignupApp', [])
     // register a directive for custom validation of dates in the past
-    .directive('inThePast', function() {
+    .directive('moreThanThirteenAgo', function() {
         return {
             require: 'ngModel',
             link: function(scope, elem, attrs, controller) {
-                controller.$validators.inThePast = function(modelValue) {
-                    var today = new Date();
-                    return (new Date(modelValue) <= today);
+                controller.$validators.moreThanThirteenAgo = function(modelValue) {
+                    if (modelValue) {
+                        var thirteenYearAgo = new Date().getFullYear() - 13;
+                        return (new Date(modelValue) <= new Date().setFullYear(thirteenYearAgo));
+                    } else {
+                        return true;
+                    }
                 }
             }
         };
@@ -28,8 +32,12 @@ angular.module('SignupApp', [])
     }])
     .controller('SignupController', function($scope) {
         $("#confirmation").hide();
+        //show confirmation message and reset form
         $scope.submitSignUp = function() {
             $("#confirmation").fadeIn();
+            $scope.signupForm.$setPristine();
+            $scope.signupForm.$setUntouched();
             $('#signupForm').trigger("reset");
+            $scope.signup = {};
         }
     });
