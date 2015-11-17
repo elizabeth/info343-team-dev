@@ -6,13 +6,6 @@ describe('the signup app', function() {
     var lnameInp = element(by.model('signup.lname'));
     var requiredLName = $('lname-required-error');
 
-    function addMultipleTasks(num) {
-        var idx;
-        for (idx = 0; idx < num; ++idx) {
-            addTask('Task ' + idx);
-        }
-    }
-
     beforeEach(function() {
         browser.get('http://localhost:8080');
     });
