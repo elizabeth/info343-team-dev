@@ -10,3 +10,8 @@ form .ng-dirty.ng-invalid {
 form .ng-dirty.ng-valid {
     border: 1px solid #00DD00;
 }
+
+h3 {
+    font-size: 1.5em;
+    padding-bottom: 1em;
+}
