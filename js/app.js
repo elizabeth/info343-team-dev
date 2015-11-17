@@ -1,5 +1,5 @@
 angular.module('SignupApp', [])
-    // register a directive for custom validation of dates in the past
+    // register a directive for custom validation of at least being age 13
     .directive('moreThanThirteenAgo', function() {
         return {
             require: 'ngModel',
