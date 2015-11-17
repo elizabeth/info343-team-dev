@@ -28,9 +28,9 @@
     <script src="js/app.js"></script>
 
 </head>
-<body>
+<body ng-app="SignupApp">
 
-<main class="container" ng-app="SignupApp">
+<main class="container" >
     <h2>Sign Up Form</h2>
     <h3>Not for children!</h3>
 
@@ -42,7 +42,7 @@
                 <label for="fnameInp">First Name:</label>
                 <input type="text" class="form-control" id="fnameInp" name="fnameInp" ng-model="signup.fname"
                        placeholder="your first name" required />
-                <p class="validation-error" ng-if="signupForm.fnameInp.$error.required">
+                <p class="validation-error" ng-if="signupForm.fnameInp.$dirty && signupForm.fnameInp.$error.required">
                     Please enter your first name
                 </p>
             </div>
@@ -51,7 +51,7 @@
                 <label for="lnameInp">Last Name:</label>
                 <input type="text" class="form-control" id="lnameInp" name="lnameInp" ng-model="signup.lname"
                        placeholder="your last name" required />
-                <p class="validation-error" ng-if="signupForm.lnameInp.$error.required">
+                <p class="validation-error" ng-if="signupForm.lnameInp.$dirty &&signupForm.lnameInp.$error.required">
                     Please enter your last name
                 </p>
             </div>
@@ -63,7 +63,7 @@
                 <p class="validation-error" ng-if="signupForm.dobInp.$error.moreThanThirteenAgo">
                     You must be at least 13 to sign up
                 </p>
-                <p class="validation-error" ng-if="signupForm.dobInp.$error.required">
+                <p class="validation-error" ng-if="signupForm.dobInp.$dirty&&signupForm.dobInp.$error.required">
                     Please enter your date of birth
                 </p>
             </div>
@@ -73,7 +73,7 @@
                 <label for="emailInp">Email:</label>
                 <input type="email" class="form-control" id="emailInp" name="emailInp" ng-model="signup.email"
                        placeholder="your@email.com" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
-                <p class="validation-error" ng-if="signupForm.emailInp.$error.required">
+                <p class="validation-error" ng-if="signupForm.emailInp.$dirty&&signupForm.emailInp.$error.required">
                     Must enter a valid email address
                 </p>
             </div>
@@ -82,7 +82,7 @@
                 <label for="passInp">Password:</label>
                 <input type="password" class="form-control" id="passInp" name="passInp" ng-model="signup.pass"
                        placeholder="password" required/>
-                <p class="validation-error" ng-if="signupForm.passInp.$error.required">
+                <p class="validation-error" ng-if="signupForm.passInp.$dirty&&signupForm.passInp.$error.required">
                     Must enter a password
                 </p>
             </div>
@@ -91,8 +91,11 @@
                 <label for="passConfInp">Confirm Password:</label>
                 <input type="password" class="form-control" id="passConfInp" name="passConfInp"
                        placeholder="confirm password" ng-model="signup.passConf" pw-check="signup.pass" required>
-                <p class="validation-error" ng-if="signupForm.passConfInp.$error.pwmatch">
+                <p class="validation-error passwordError" ng-if="signupForm.passConfInp.$dirty &&signupForm.passConfInp.$error.pwmatch && !signupForm.passConfInp.$error.required">
                     Passwords do not match
+                </p>
+                <p class="validation-error passwordError" ng-if="signupForm.passConfInp.$dirty && signupForm.passConfInp.$error.required ">
+                    Must enter a confirmed password
                 </p>
             </div>
 
