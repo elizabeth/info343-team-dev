@@ -59,8 +59,11 @@
                         <label for="emailInp">Email:</label>
                         <input type="email" class="form-control" id="emailInp" name="emailInp" ng-model="signup.email"
                                placeholder="your@email.com" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
-                        <p class="validation-error email-required-error" ng-if="signupForm.emailInp.$error.required">
-                            Must enter a valid email address
+                        <p class="validation-error email-required-error" ng-if="signupForm.emailInp.$error.required && signupForm.emailInp.$dirty">
+                            Email address is required
+                        </p>
+                        <p class="validation-error email-invalid-error" ng-if="signupForm.emailInp.$error.email && signupForm.emailInp.$dirty">
+                            Valid email address is required
                         </p>
                     </div>
 
