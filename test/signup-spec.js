@@ -19,9 +19,17 @@ describe('the signup app', function() {
 
     it('must require first name', function () {
         expect(requiredFName.isPresent()).toEqual(false);
+        fnameInp.sendKeys('a');
+        expect(requiredFName.isPresent()).toEqual(true);
+        fnameInp.clear();
+        expect(requiredFName.isPresent()).toEqual(false);
     });
 
     it('must require last name', function() {
         expect(requiredLName.isRresent()).toEqual(false);
+        lnameInp.sendKeys('a');
+        expect(requiredLName.isPresent()).toEqual(true);
+        lnameInp.clear();
+        expect(requiredLName.isPresent()).toEqual(false);
     });
 });
