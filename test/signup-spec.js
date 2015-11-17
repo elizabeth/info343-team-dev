@@ -1,8 +1,6 @@
 //test script for the signup form app
 
 describe('the signup app', function() {
-    var fnameInp = element(by.model('signup.fname'));
-    var requiredFName = $('.fname-required-error');
     var lnameInp = element(by.model('signup.lname'));
     var requiredLName = $('.lname-required-error');
 
