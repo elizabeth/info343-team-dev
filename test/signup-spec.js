@@ -13,4 +13,15 @@ describe('the signup app', function() {
         emailInp.sendKeys('abc');
         expect(requiredEmail.isPresent()).toEqual(true);
     });
+
+    it('must enter a valid email', function () {
+        expect(requiredEmail.isPresent()).toEqual(false);
+        emailInp.sendKeys('youremail.com');
+        expect(requiredEmail.isPresent()).toEqual(true);
+        emailInp.clear();
+        expect(requiredEmail.isPresent()).toEqual(false);
+        emailInp.sendKeys('your@email.com');
+        expect(requiredEmail.isPresent()).toEqual(false);
+        emailInp.clear();
+    });
 });
