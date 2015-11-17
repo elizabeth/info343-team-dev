@@ -59,12 +59,9 @@
             <div class="form-group">
                 <label for="dobInp">Birth date:</label>
                 <input type="date" class="form-control" id="dobInp" name="dobInp" ng-model="signup.dob"
-                       placeholder="DD/MM/YYYY" max="11-18-2002" required />
-                <p class="validation-error" ng-if="signupForm.dobInp.$error.min">
+                       placeholder="DD/MM/YYYY" more-than-thirteen-ago />
+                <p class="validation-error" ng-if="signupForm.dobInp.$error.moreThanThirteenAgo">
                     You must be at least 13 to sign up
-                </p>
-                <p class="validation-error" ng-if="signupForm.dobInp.$error.required">
-                    Please enter your date of birth
                 </p>
             </div>
 
