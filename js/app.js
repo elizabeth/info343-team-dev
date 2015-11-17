@@ -1,16 +1,5 @@
 angular.module('SignupApp', [])
-<<<<<<< HEAD
-    //the direcitve will be invalid if the date is less than 13 years from now
-    //fow example, 11/20/2002 will be invalid
     .directive('moreThanThirteenAgo', function() {
-=======
-    // register a directive for custom validation of dates in the past
-<<<<<<< HEAD
-    .directive('inThePast', function() {
->>>>>>> master
-=======
-    .directive('moreThanThirteenAgo', function() {
->>>>>>> master
         return {
             require: 'ngModel',
             link: function(scope, elem, attrs, controller) {
@@ -25,14 +14,8 @@ angular.module('SignupApp', [])
             }
         };
     })
-<<<<<<< HEAD
-    //the directive will be invalid if the input is not a date
-    //for example: swad, 15555
-    .directive('isDate', function() {
-=======
     // register a directive to check matching passwords
     .directive('pwCheck', [function () {
->>>>>>> master
         return {
             require: 'ngModel',
             link: function (scope, elem, attrs, ctrl) {
@@ -47,13 +30,7 @@ angular.module('SignupApp', [])
         }
     }])
     .controller('SignupController', function($scope) {
-<<<<<<< HEAD
-
-        //there should be ng-submit=submitSignUp in html form
-        //also create a model confirmation to show confirmation message
-=======
         $("#confirmation").hide();
->>>>>>> master
         $scope.submitSignUp = function() {
             $("#confirmation").fadeIn();
             $('#signupForm').trigger("reset");
