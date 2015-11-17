@@ -1,5 +1,5 @@
 angular.module('SignupApp', [])
-    // register a directive for custom validation of dates in the past
+    // register a directive for custom validation of at least being age 13
     .directive('moreThanThirteenAgo', function() {
         return {
             require: 'ngModel',
@@ -32,8 +32,12 @@ angular.module('SignupApp', [])
     }])
     .controller('SignupController', function($scope) {
         $("#confirmation").hide();
+        //show confirmation message and reset form
         $scope.submitSignUp = function() {
             $("#confirmation").fadeIn();
+            $scope.signupForm.$setPristine();
+            $scope.signupForm.$setUntouched();
             $('#signupForm').trigger("reset");
+            $scope.signup = {};
         }
     });
