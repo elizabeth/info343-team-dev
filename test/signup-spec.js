@@ -4,7 +4,7 @@ describe('the signup app', function() {
     var fnameInp = element(by.model('signup.fname'));
     var requiredFName = $('.fname-required-error');
     var lnameInp = element(by.model('signup.lname'));
-    var requiredLName = $('lname-required-error');
+    var requiredLName = $('.lname-required-error');
 
     var firstPasswordInput = element(by.model('signup.pass'));
     var secondPasswordInput = element(by.model('signup.passConf'));
@@ -36,15 +36,7 @@ describe('the signup app', function() {
         secondPasswordInput.sendKeys(wrong);
         expect(passwordMatchError.isPresent()).toBe(false);
     });
-
-    it('must require first name', function () {
-        expect(requiredFName.isPresent()).toEqual(false);
-        fnameInp.sendKeys('a');
-        expect(requiredFName.isPresent()).toEqual(true);
-        fnameInp.clear();
-        expect(requiredFName.isPresent()).toEqual(false);
-    });
-
+    
     it('must require last name', function() {
         expect(requiredLName.isRresent()).toEqual(false);
         lnameInp.sendKeys('a');
