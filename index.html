@@ -33,6 +33,8 @@
         <main class="container" ng-app="SignupApp">
             <h2>Sign Up Form</h2>
 
+            <p class="alert alert-success" id="confirmation">You have successfully submitted your form!</p>
+
             <div ng-controller="SignupController">
                 <form name="signupForm" id="signupForm" novalidate>
                     <div class="form-group">
@@ -73,12 +75,10 @@
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary" ng-disabled="signupForm.$invalid"
-                                ng-click="submitSignUp()">Submit</button>
+                                ng-click="submitSignUp()">Sign up</button>
                     </div>
                 </form>
             </div>
-
-            <div class="alert alert-success" id="confirmation">You have successfully submitted your form!</div>
         </main>
 
     </body>
