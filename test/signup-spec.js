@@ -8,6 +8,10 @@ describe('the signup app', function() {
         browser.get('http://localhost:8080');
     });
 
+    it('must have the proper page title', function () {
+        expect(browser.getTitle()).toEqual('Sign Up Form');
+    });
+
     it('must show validation error for email', function () {
         expect(requiredEmail.isPresent()).toEqual(false);
         emailInp.sendKeys('abc');
