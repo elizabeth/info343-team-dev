@@ -10,6 +10,6 @@ describe('the signup app', function() {
     }
 
     beforeEach(function() {
-        browser.get('http://localhost:8000');
+        browser.get('http://localhost:8080');
     });
 });
